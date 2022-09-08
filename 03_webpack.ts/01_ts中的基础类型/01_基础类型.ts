@@ -107,4 +107,37 @@
     // console.log(getObj({ name: '路非', age: 26 }));
     // console.log(getObj(123)); // error
 
+    // 联合类型（union Types）表示取值可以为多种类型的一种
+    // 需求1：定义一个函数得到一个数字或字符串值的字符串形式值
+    // function getStr(str: number | string): string {
+    //     return str.toString()
+    // }
+    // console.log(getStr('你是小笨蛋'))
+
+    // 需求2：定义一个函数得到一个数字或字符串值的长度
+    // 类型断言
+    // 语法1 <类型>变量名
+    // 语法2 变量 as 类型
+
+    function getStr(str: number | string): number {
+        // return str.toString().length
+
+        if ((<string>str).length) {
+            return (str as string).length
+        } else {
+            return str.toString().length
+        }
+    }
+
+    console.log('类型断言：字符串', getStr('哈哈哈，我快疯了'))
+    console.log('类型断言：数字', getStr(5469523))
+
+    // 类型推断 是在没有指定明确类型的时候，编译器推测出一个类型
+
+    // let txt = 526 // 类型推断 为 number
+    // txt = '电脑好难用' // error 不能将 string 赋值给 number
+
+    let txt; // 类型推断为 any
+
+
 })()
